@@ -1,0 +1,7 @@
+#+TITLE: Facade
+* One App to get them all
+  - media contents from various social networking sites under one roof
+  - currently done only for facebook and only for publicly accessible posts
+* Uses
+  - Python Flask
+  - Facebook Graph API

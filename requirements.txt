@@ -1,0 +1,2 @@
+Flask==0.12.2
+facebook-sdk==2.0.0
