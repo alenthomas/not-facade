@@ -1,4 +1,6 @@
 from flask import Flask
+from flask import render_template as rt
+
 from keys import FACADE_FLASK_SECRET
 
 app = Flask(__name__)
@@ -9,4 +11,4 @@ app.config.update(dict(
 
 @app.route("/")
 def home():
-    return "Hello World!"
+    return rt('home.html')
