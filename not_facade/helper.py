@@ -11,9 +11,8 @@ url0 = "https://graph.facebook.com/v2.10/{}?access_token={}"
 url1 = "https://graph.facebook.com/v2.10/{}/albums?access_token={}"
 
 # PAGE TIMELINE PHOTOS
-url2 = "https://graph.facebook.com/v2.10/{}/photos?access_token={}"
+url2 = "https://graph.facebook.com/v2.10/{}/photos?access_token={}&limit=10"
 
-# link of media content
 url3 = "https://graph.facebook.com/v2.10/{}?access_token={}&fields=source"
 
 
