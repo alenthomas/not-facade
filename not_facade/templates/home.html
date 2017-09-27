@@ -3,5 +3,14 @@
 {% block body %}
 <h3> Welcome to !facade </h3>
 <p>clearly there is no pun intended :3</p>
+<form method="POST">
+  <label> Enter a FB Page Name (as specified in url):<br>
+    <input type="text" name="page_name"/>
+    <input type="submit" value="Enter"/>
+</form>
+{% if post %}
+<br>
+<p>input val : {{ page_name }}
+{% endif %}
 {% endblock %}
 
