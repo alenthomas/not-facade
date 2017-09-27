@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Welcome to {{ page_name }}{% endblock %}
+{% block body %}
+<h3>{{ page_name}}</h3>
+<div id="Images">
+  {% for link in data %}
+  <div id="Image">
+    <img src="{{ link.src }}" alt="Image">
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
