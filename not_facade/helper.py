@@ -11,7 +11,7 @@ url0 = "https://graph.facebook.com/v2.10/{}?access_token={}"
 url1 = "https://graph.facebook.com/v2.10/{}/albums?access_token={}"
 
 # PAGE TIMELINE PHOTOS
-url2 = "https://graph.facebook.com/v2.10/{}/photos?access_token={}&limit=10"
+url2 = "https://graph.facebook.com/v2.10/{}/photos?limit={}&access_token={}"
 
 url3 = "https://graph.facebook.com/v2.10/{}?access_token={}&fields=source"
 
@@ -40,8 +40,8 @@ def get_albums(page_id):
     except KeyError as err:
         raise(err)
 
-def get_images(album_id):
-    api = url2.format(album_id, FB_FACADE_TOKEN)
+def get_images(album_id, limit):
+    api = url2.format(album_id, limit, FB_FACADE_TOKEN)
     response = request.urlopen(api)
     result = json.load(response)
     img_ids = []
