@@ -30,21 +30,16 @@ def page():
         #    links.append(get_img_src(i))
         return rt('page.html', page_name=page['name'], data=links)
 
-@app.route("/albums")
-def get_page_albums():
-    if req.args.get("pageid"):
-        album = get_albums(req.args.get('pageid'))
-        return jsonify(album)
-    else:
-        return "Invalid page id"
+@app.route("/albums/<pageid>")
+def get_page_albums(pageid):
+    album = get_albums(pageid)
+    return jsonify(album)
 
-@app.route("/images")
-def get_album_images():
-    if req.args.get("albumid"):
-        image_ids = get_images(req.args.get('albumid'))['data']
-        return jsonify(image_ids)
-    else:
-        return "Invalid Album Id"
+@app.route("/images/<albumid>")
+def get_album_images(albumid):
+    limit = int(req.args.get('limit')) if req.args.get('limit') else 10
+    image_ids = get_images(albumid, limit)
+    return jsonify(image_ids)
 
 @app.route("/image/<imgid>")
 def get_img_by_id(imgid):
