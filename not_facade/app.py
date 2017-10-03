@@ -15,7 +15,7 @@ app.config.update(dict(
 
 @app.route("/",)
 def home():
-    return rt('home.html')
+    return rt('base.html')
 
 @app.route("/page", methods=['POST'])
 def page():
