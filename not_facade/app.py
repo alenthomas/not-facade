@@ -17,18 +17,10 @@ app.config.update(dict(
 def home():
     return rt('base.html')
 
-@app.route("/page", methods=['POST'])
-def page():
-    if check_form_data(['page_name'], req.form):
-        page_name = req.form['page_name']
-        page = get_page(page_name)
-        print("\npageID", page['id'], "\n")
-        #album = get_albums(page['id'])
-        #image_ids = get_images(album['id'])['data']
-        links = []
-        #for i in image_ids:
-        #    links.append(get_img_src(i))
-        return rt('page.html', page_name=page['name'], data=links)
+@app.route("/page/<page_name>")
+def page(page_name):
+    page = get_page(page_name)
+    return jsonify(page)
 
 @app.route("/albums/<pageid>")
 def get_page_albums(pageid):
