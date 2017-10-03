@@ -1,22 +1,32 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import get from './urlHelpers.js';
-
-const mySubmit = ()=> {
-  let name = document.getElementById("page_name");
-  console.log("page_name_input: ", name.value);
-  get(['/page', name.value].join('/'));
-
-};
+import helpers from './urlHelpers.js';
 
 class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {pageName: null};
+  }
+
+  getData(jsonObj) {
+    this.setState(() => ({
+      pageName: jsonObj["name"]
+    }));
+  }
+
+  mySubmit () {
+    let name = document.getElementById("page_name");
+    helpers.get(['/page', name.value].join('/'), this.getData.bind(this));
+  };
+
   render() {
     return (
       <div className="form">
+        <h1>Welcome to {this.state.pageName}</h1>
         <label>Enter a FB page name (as specified in FB uri):</label>
         <input id="page_name" type="text" name="page_name"/>
-        <input type="submit" value="Enter" onClick={mySubmit} />
+        <input type="submit" value="Enter" onClick={this.mySubmit.bind(this)} />
       </div>
     );
   }
