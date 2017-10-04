@@ -4,6 +4,7 @@ import {render} from 'react-dom';
 import Header from './header.jsx';
 import MyForm from './myForm.jsx';
 import ImageScroll from './imageScroll.jsx';
+import IndImage from './indImage.jsx';
 
 import helpers from './urlHelpers.js';
 
@@ -12,14 +13,16 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {data: null};
   }
 
-  getImages(jsonObj) {
+  getImageIds(jsonObj) {
     console.log("in index", jsonObj['data']);
+    this.setState({data: jsonObj['data']});
   }
 
   getAlbum(jsonObj) {
-    helpers.get(['/images', jsonObj['id']].join('/'), this.getImages.bind(this));
+    helpers.get(['/images', jsonObj['id']].join('/'), this.getImageIds.bind(this));
   }
 
   render() {
@@ -27,7 +30,7 @@ class App extends React.Component {
       <div className="homepage">
         <Header/>
         <MyForm getAlbum={this.getAlbum.bind(this)}/>
-        <ImageScroll/>
+        <ImageScroll ids={this.state.data}/>
       </div>
     );
   }
