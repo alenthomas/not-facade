@@ -1,23 +1,25 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import IndImage from './indImage.jsx';
+
 class ImageScroll extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
-  imageElement() {
-    return (<div className="ind-img">
-            <img src="https://68.media.tumblr.com/avatar_2920f2be9159_128.png"/>
-            </div>);
+  imageElements() {
+    if (this.props.ids)
+     return this.props.ids.map((i) => <IndImage imgId={i}/>);
+    return null;
   }
+
   render() {
-    return (
-      <div className="image-scroll">
-        {this.imageElement()}
-      </div>
-    );
+    const val = this.imageElements();
+    return (<div className="img-scroll">
+            {val}
+            </div>);
   }
 }
 
