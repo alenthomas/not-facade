@@ -18,6 +18,10 @@ class IndImage extends React.Component {
     helpers.get(['/image', imgId].join('/'), this.returnLink.bind(this));
   }
 
+  componentDidMount() {
+    this.getImageLink(this.props.imgId);
+  }
+
   render() {
     return(
       <div className="ind-image">

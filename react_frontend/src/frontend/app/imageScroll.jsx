@@ -11,15 +11,13 @@ class ImageScroll extends React.Component {
 
   imageElements() {
     if (this.props.ids)
-     return this.props.ids.map((i) => <IndImage imgId={i}/>);
+     return this.props.ids.map((i) => <IndImage key={i} imgId={i}/>);
     return null;
   }
 
   render() {
-    const val = this.imageElements();
-    return (<div className="img-scroll">
-            {val}
-            </div>);
+    const imageElements = this.imageElements();
+    return (<div>{imageElements}</div>);
   }
 }
 
