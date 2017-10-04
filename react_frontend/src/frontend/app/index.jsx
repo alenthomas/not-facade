@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 import Header from './header.jsx';
 import MyForm from './myForm.jsx';
+import ImageScroll from './imageScroll.jsx';
 
 import helpers from './urlHelpers.js';
 
@@ -26,6 +27,7 @@ class App extends React.Component {
       <div className="homepage">
         <Header/>
         <MyForm getAlbum={this.getAlbum.bind(this)}/>
+        <ImageScroll/>
       </div>
     );
   }
