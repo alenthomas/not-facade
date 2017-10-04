@@ -9,15 +9,16 @@ class MyForm extends React.Component {
     this.state = {pageName: null};
   }
 
-  getData(jsonObj) {
+  getPage(jsonObj) {
     this.setState(() => ({
-      pageName: jsonObj["name"]
+      pageName: jsonObj['name']
     }));
+    helpers.get(['/albums', jsonObj['id']].join('/'), this.props.getAlbum);
   }
 
   mySubmit () {
     let name = document.getElementById("page_name");
-    helpers.get(['/page', name.value].join('/'), this.getData.bind(this));
+    helpers.get(['/page', name.value].join('/'), this.getPage.bind(this));
   };
 
   render() {
