@@ -7,7 +7,7 @@ class IndImage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {link: null};
+    this.state = {link: "/static/loading.svg", fav: false, className: "uncrapped"};
   }
 
   returnLink (jsonObj) {
@@ -22,10 +22,22 @@ class IndImage extends React.Component {
     this.getImageLink(this.props.imgId);
   }
 
+  toggleCrap () {
+    this.setState(Object.assign(this.state, {fav: !this.state.fav}));
+  }
+
+  fav () {
+    if (this.state.fav)
+     return "/static/crapped.svg";
+    return "/static/uncrapped.svg";
+  }
+
   render() {
+    let favlink = this.fav();
     return(
       <div className="ind-image">
         <img src={this.state.link}/>
+        <img src={favlink} onClick={this.toggleCrap.bind(this)}/>
       </div>
     );
   }
