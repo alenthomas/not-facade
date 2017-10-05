@@ -30,7 +30,8 @@ def get_page_albums(pageid):
 @app.route("/images/<albumid>")
 def get_album_images(albumid):
     limit = int(req.args.get('limit')) if req.args.get('limit') else 10
-    image_ids = get_images(albumid, limit)
+    cursor = req.args.get('afterCursor') if req.args.get('afterCursor') else ''
+    image_ids = get_images(albumid, limit, cursor)
     return jsonify(image_ids)
 
 @app.route("/image/<imgid>")
