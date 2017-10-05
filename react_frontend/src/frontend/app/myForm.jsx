@@ -21,13 +21,19 @@ class MyForm extends React.Component {
     helpers.get(['/page', name.value].join('/'), this.getPage.bind(this));
   };
 
+  pageExists() {
+    if (this.state.pageName)
+     return <h4 className="page-name">{this.state.pageName}</h4>;
+    return null;
+  }
   render() {
+    const welcome = this.pageExists();
     return (
       <div className="form">
-        <h1>Welcome to {this.state.pageName}</h1>
         <label>Enter a FB page name (as specified in FB uri):</label>
         <input id="page_name" type="text" name="page_name"/>
         <input type="submit" value="Enter" onClick={this.mySubmit.bind(this)} />
+        {welcome}
       </div>
     );
   }

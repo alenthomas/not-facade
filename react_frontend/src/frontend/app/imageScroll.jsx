@@ -17,7 +17,7 @@ class ImageScroll extends React.Component {
 
   render() {
     const imageElements = this.imageElements();
-    return (<div>{imageElements}</div>);
+    return (<div className="image-scroll">{imageElements}</div>);
   }
 }
 

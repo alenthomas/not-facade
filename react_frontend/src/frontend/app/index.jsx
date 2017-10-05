@@ -27,10 +27,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="homepage">
-        <Header/>
-        <MyForm getAlbum={this.getAlbum.bind(this)}/>
-        <ImageScroll ids={this.state.data}/>
+      <div className="container">
+        <Header />
+        <MyForm getAlbum={this.getAlbum.bind(this)} />
+        <ImageScroll ids={this.state.data} />
       </div>
     );
   }
