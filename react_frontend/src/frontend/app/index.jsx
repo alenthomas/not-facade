@@ -13,16 +13,28 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {data: null};
+    this.state = {
+      data: [],
+      albumId: null,
+      afterCursor: null
+    };
   }
 
   getImageIds(jsonObj) {
-    console.log("in index", jsonObj['data']);
-    this.setState({data: jsonObj['data']});
+    console.log(this.state);
+    this.setState(Object.assign({}, this.state, {data: this.state.data.concat(jsonObj['data']), afterCursor: jsonObj['paging']['cursors']['after']}));
+    console.log(this.state);
   }
 
   getAlbum(jsonObj) {
+    this.state['albumId'] = jsonObj['id'];
     helpers.get(['/images', jsonObj['id']].join('/'), this.getImageIds.bind(this));
+  }
+
+  updateOnScroll() {
+    console.log("in updateOnScroll");
+    console.log(this);
+    helpers.get('/images/' + this.state.albumId + '?afterCursor=' + this.state.afterCursor, this.getImageIds.bind(this));
   }
 
   render() {
@@ -30,7 +42,7 @@ class App extends React.Component {
       <div className="container">
         <Header />
         <MyForm getAlbum={this.getAlbum.bind(this)} />
-        <ImageScroll ids={this.state.data} />
+        <ImageScroll ids={this.state.data} onScrollEvent={this.updateOnScroll.bind(this)} />
       </div>
     );
   }
