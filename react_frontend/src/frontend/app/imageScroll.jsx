@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 
 import IndImage from './indImage.jsx';
 
-const SCROLL_LIMIT = 800;
+const SCROLL_LIMIT = 780;
 
 class ImageScroll extends React.Component {
 
@@ -15,8 +15,8 @@ class ImageScroll extends React.Component {
     let scroll = document.getElementsByClassName('image-scroll')[0];
     let divHeight = scroll.clientHeight;
     let currentScroll = window.scrollY;
+//    console.log(divHeight, currentScroll);
     if(divHeight - currentScroll < SCROLL_LIMIT) {
-      console.log("now");
       this.props.onScrollEvent();
     }
   }

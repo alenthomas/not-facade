@@ -21,9 +21,12 @@ class App extends React.Component {
   }
 
   getImageIds(jsonObj) {
-    console.log(this.state);
+    //    console.log(this.state);
+//    console.log("on updateScroll: ",jsonObj['paging']['cursors']['after']);
+//    console.log(this.state.afterCursor);
     this.setState(Object.assign({}, this.state, {data: this.state.data.concat(jsonObj['data']), afterCursor: jsonObj['paging']['cursors']['after']}));
-    console.log(this.state);
+    //    console.log(this.state);
+//    console.log(this.state.afterCursor);
   }
 
   getAlbum(jsonObj) {
@@ -32,8 +35,6 @@ class App extends React.Component {
   }
 
   updateOnScroll() {
-    console.log("in updateOnScroll");
-    console.log(this);
     helpers.get('/images/' + this.state.albumId + '?afterCursor=' + this.state.afterCursor, this.getImageIds.bind(this));
   }
 
