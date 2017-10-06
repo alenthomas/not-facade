@@ -32,7 +32,7 @@ class MyForm extends React.Component {
       <div className="form">
         <label>Enter a FB page name (as specified in FB uri):</label>
         <input id="page_name" type="text" name="page_name"/>
-        <input type="submit" value="Enter" onClick={this.mySubmit.bind(this)} />
+        <input className="button" type="submit" value="Enter" onClick={this.mySubmit.bind(this)} />
         {welcome}
       </div>
     );

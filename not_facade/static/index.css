@@ -1,29 +1,48 @@
-header {
+.container {
+text-align: center;
+}
 
+.header {
+  text-align: center;
+  margin: 2em;
 }
 
 h2 {
-
+  text-align: center;
+  margin-bottom: 0px;
 }
 
 h4 {
-
+text-align: center;
 }
 
-form {
+input {
+  margin-right: 1em;
+}
+.button:hover {
+  background-color: #2fb7e8;
+}
+.form {
+  text-align: left;
+  margin: auto;
+  padding: 1em;
+}
 
+.page-name {
+text-align: center;
 }
 
 label {
+text-align: left;
+}
+
+.image-scroll {
 
 }
 
-image-scroll {
-
-}
-
-ind-image {
-
+.ind-image img{
+  border-style: groove;
+  border-radius: 15px;
 }
 
 img {

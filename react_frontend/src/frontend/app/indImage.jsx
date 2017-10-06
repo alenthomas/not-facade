@@ -7,7 +7,7 @@ class IndImage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {link: "/static/loading.svg", fav: false, className: "uncrapped"};
+    this.state = {link: "/static/loading.svg", fav: false};
   }
 
   returnLink (jsonObj) {
