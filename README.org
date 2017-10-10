@@ -1,4 +1,4 @@
-#+TITLE: Facade
+#+TITLE: Facade [[https://travis-ci.org/alenthomas/not-facade.svg?branch=master][Build Status]]
 * One App to get them all
   - media contents from various social networking sites under one roof
   - currently done only for facebook and only for publicly accessible posts
