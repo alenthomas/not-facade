@@ -19,6 +19,7 @@ def home():
 
 @app.route("/page/<page_name>")
 def page(page_name):
+    print('in here')
     page = get_page(page_name)
     return jsonify(page)
 

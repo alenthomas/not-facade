@@ -75,3 +75,10 @@ circle {
   stroke-dasharray: 31.4159, 31.4159;
   transform: rotate(234deg, 50, 50);
 }
+
+.fa-heart {
+  color: #f98989;
+}
+.fa-heart-o {
+  color: #000;
+}

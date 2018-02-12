@@ -265,4 +265,10 @@ venv.bak/
 pyvenv.cfg
 pip-selfcheck.json
 
+
+# custom
+.DS_Store
+not_facade_web/node_modules/*
+not_facade_web/.DS_Store
+
 # End of https://www.gitignore.io/api/node,linux,emacs,python,django,virtualenv

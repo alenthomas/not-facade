@@ -1,5 +1,5 @@
 import json
-from urllib import request
+import requests as r
 
 from keys import FB_FACADE_TOKEN
 
@@ -18,8 +18,8 @@ url3 = "https://graph.facebook.com/v2.10/{}?access_token={}&fields=source"
 
 def get_page(page_name):
     api = url0.format(page_name, FB_FACADE_TOKEN)
-    response = request.urlopen(api)
-    result = json.load(response)
+    response = r.get(api)
+    result = response.json()
     try:
         return {'id':result['id'], 'name':result['name']}
     except KeyError as err:
@@ -27,8 +27,8 @@ def get_page(page_name):
 
 def get_albums(page_id):
     api = url1.format(page_id, FB_FACADE_TOKEN)
-    response = request.urlopen(api)
-    result = json.load(response)
+    response = r.get(api)
+    result = response.json()
     timeline_album = {}
     try:
         for album in result['data']:
@@ -42,8 +42,8 @@ def get_albums(page_id):
 
 def get_images(album_id, limit, cursor=''):
     api = url2.format(album_id, limit, cursor, FB_FACADE_TOKEN)
-    response = request.urlopen(api)
-    result = json.load(response)
+    response = r.get(api)
+    result = response.json()
     img_ids = []
     paging = None
     try:
@@ -56,8 +56,8 @@ def get_images(album_id, limit, cursor=''):
 
 def get_img_src(img_id):
     api = url3.format(img_id, FB_FACADE_TOKEN)
-    response = request.urlopen(api)
-    result = json.load(response)
+    response = r.get(api)
+    result = response.json()
     try:
         src = result['source']
         return {'src':src}
